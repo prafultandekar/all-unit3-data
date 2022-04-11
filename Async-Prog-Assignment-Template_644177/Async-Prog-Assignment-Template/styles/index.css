@@ -1,0 +1,50 @@
+
+#nav{
+    height: 40px;
+    width: 100%;
+    border: 2px solid black;
+    display: flex;
+    justify-content: right;
+    /* gap: 20px; */
+}
+
+#option{
+    display: flex;
+    margin-right: 30px;
+    margin-top: -0px;
+}
+p{
+    margin: auto;
+    margin-left: 50px;;
+    font-weight: 600;
+    cursor: context-menu;
+}#slideshow {
+    height: 500px;
+    width: 95%;
+    margin: auto;
+    margin-top: 50px;
+    object-fit: cover;
+  }
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+  }
+  #movies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 10px;
+  }
+  #release,
+  #imdp {
+    margin-left: -0px;
+    font-weight: 500;
+    margin-top: -0px;
+  }
+  
+  #sorter{
+    padding: 10px;
+    margin: 10px;
+  }
+  
