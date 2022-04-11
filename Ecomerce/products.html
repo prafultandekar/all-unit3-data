@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           #maindiv{
+               display: grid;
+               grid-template-columns: repeat(6,1fr);
+               grid-template-rows: 300px;
+               gap: 20px;
+               padding: 20px;
+    }
+    img{
+        width: 100%;
+        height: 70%;
+    }
+    h3, p{
+        text-align: center;
+        margin-top: 0px;
+    }
+    .removeSold{
+        display: flex;
+        justify-content: space-around;
+    }
+    </style>
+ 
+</head>
+<body>
+    <h1>counter is <p id=""></p></h1>
+    <div id="maindiv">
+
+    </div>
+</body>
+</html>
+<script>
+    var product = JSON.parse(localStorage.getItem("Products"))
+    product.map(function(element,index){
+        
+        var div = document.createElement("div");
+        div.setAttribute("class","product");
+        
+        var img = document.createElement("img");
+        img.setAttribute("src",element.product_image);
+
+        var name = document.createElement("h3");
+        name.innerText=element.product_name;
+
+        var price = document.createElement("P");
+        price.innerText="₹ "+element.product_price;
+
+        var removeSold = document.createElement("div");
+        removeSold.setAttribute("class","removeSold");
+
+        var remove = document.createElement("button");
+        remove.innerText="Remove";
+        remove.setAttribute("id","remove");
+        remove.addEventListener("click", function () {
+                  removeItem(element, index);
+                });
+
+
+        var sold = document.createElement("button");
+        sold.innerText=element.product_sold;
+        sold.setAttribute("id","sold")
+        sold.addEventListener("click",soldButton)
+           function soldButton(){
+               if(sold.innerText=="true"){
+                   sold.innerText="false"
+                   sold.style.backgroundColor="green"
+               }
+               else if(sold.innerText=="false"){
+                   sold.innerText="true"
+                   sold.style.backgroundColor="red"
+               }
+           }
+          
+        
+        if(sold.innerText=="true"){
+            sold.style.color="white"
+            sold.style.backgroundColor="red"
+        }
+        else{
+            sold.style.color="white"
+            sold.style.backgroundColor="green"
+        }
+
+        removeSold.append(remove,sold)
+        div.append(img,name,price,removeSold);
+        document.getElementById("maindiv").append(div)
+
+
+    })
+    function removeItem(element,index){
+        console.log(element, index);
+        product.splice(index, 1);
+        console.log(product);
+        localStorage.setItem("Products", JSON.stringify(product));
+        window.location.reload();
+      
+    }
+    
+
+
+
+ 
+</script>
