@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+
+  <body>
+    <!--DO NOT CHANGE THIS ID's-->
+
+    <div id="container">
+      <div id="sidebar">
+        <!--add your sidebar component here-->
+      </div>
+
+      <div id="main">
+        <!--DO NOT CHANGE THIS ID's-->
+        <!--Show the clicked article in detailed format here ONLY-->
+      </div>
+    </div>
+  </body>
+</html>
+<script type="module">
+  import sidebar from "/components/sidebar.js";
+  let side = document.getElementById("sidebar");
+  side.innerHTML = sidebar();
+
+  import { apiCall, appendArticles, article, search } from "/scripts/main.js";
+
+  let data = JSON.parse(localStorage.getItem("article"));
+  // console.log("data:", data);
+
+  let main = document.getElementById("main");
+
+  appendArticles(data, main);
+
+  let input = document.getElementById("searchbar");
+  // console.log('input:', input)
+
+  input.addEventListener("keypress", () => {
+    search(event, input.value);
+  });
+
+  let search_term = async (e) => {
+    if (e.code === "Enter") {
+      localStorage.setItem("searchTerm", input.value);
+      window.location.href = "search.html";
+      //console.log('data:', data)
+      //appendData(data);
+    }
+  };
+
+  // let appendData = (data) => {
+  //   main.innerHTML = null;
+  //   data.forEach((elem) => {
+  //     let div = document.createElement("div");
+  //     div.setAttribute("id", "blog");
+  //     div.style.display = "flex";
+  //     div.style.flex_direction = "column";
+  //     div.style.gap = "20px";
+  //     div.style.justifyContent = "space-between";
+  //     // div.addEventListener("click", () => {
+  //     //   article(elem);
+  //     // });
+  //     let div1 = document.createElement("div");
+
+  //     div1.innerText = elem.title;
+  //     let div2 = document.createElement("div");
+  //     div2.innerText = elem.description;
+  //     let div3 = document.createElement("div");
+  //     div3.style.height = "200px";
+  //     div3.style.width = "400px";
+
+  //     let img = document.createElement("img");
+
+  //     img.src = elem.urlToImage;
+  //     div3.append(img);
+
+  //     div.append(div1, div2, div3);
+
+  //     main.append(div);
+  //   });
+  // };
+
+  // appendData(data);
+</script>

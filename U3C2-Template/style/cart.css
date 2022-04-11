@@ -1,0 +1,14 @@
+#cart {
+  display: grid;
+  grid-template-columns: repeat(1, 300px);
+  grid-template-rows: repeat(auto, 300px);
+  grid-gap: 20px;
+}
+
+img {
+  width: 100%;
+  border-radius: 10px;
+}
+#check {
+  margin-top: 50px;
+}

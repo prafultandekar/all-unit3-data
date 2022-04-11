@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/main.css" />
+  </head>
+
+  <body>
+    <div id="main">
+      <!--No need to add sidebar here, directly display search results here only-->
+
+      <!-- show headline, description and image -->
+    </div>
+  </body>
+</html>
+<script type="module">
+  let data = JSON.parse(localStorage.getItem("searchData"));
+
+  import { apiCall, appendArticles, article, search } from "/scripts/main.js";
+  let main = document.getElementById("main");
+
+  let keyword = localStorage.getItem("search_term");
+  // console.log('keyword:', keyword)
+
+  let url = ` https://blog-search-u3c4.herokuapp.com/api/search/?q=${keyword}`;
+  apiCall(url);
+  // console.log("keyword:", keyword);
+
+  //appendArticles(data, main);
+  //console.log('data:', data)
+
+  // let appendData = (data) => {
+  //   main.innerHTML = null;
+  //   data.forEach((elem) => {
+  //     let div = document.createElement("div");
+  //     div.setAttribute("id", "blog");
+  //     div.style.display = "flex";
+  //     div.style.flex_direction = "row";
+  //     div.style.gap = "20px";
+  //     div.style.justifyContent = "center";
+  //     div.addEventListener("click", () => {
+  //       article(elem);
+  //     });
+  //     let div1 = document.createElement("div");
+
+  //     div1.innerText = elem.title;
+  //     let div2 = document.createElement("div");
+  //     div2.innerText = elem.description;
+  //     let div3 = document.createElement("div");
+  //     div3.style.height = "200px";
+  //     div3.style.width = "400px";
+
+  //     let img = document.createElement("img");
+
+  //     img.src = elem.urlToImage;
+  //     div3.append(img);
+
+  //     div.append(div1, div2, div3);
+
+  //     main.append(div);
+  //   });
+  // };
+
+  // appendData(data);
+
+  // let clickData = [];
+
+  // let article = (elem) => {
+  //   clickData.push(elem);
+  //   localStorage.setItem("article", JSON.stringify(clickData));
+  //   window.location.href = "blog.html";
+  // };
+</script>

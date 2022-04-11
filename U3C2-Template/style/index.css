@@ -1,0 +1,25 @@
+#navbar {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+#navbar > div {
+  margin-left: 50px;
+  margin-top: 10px;
+}
+#count {
+  margin-right: 50px;
+}
+
+#menu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(auto, 300px);
+  grid-gap: 20px;
+  margin: auto;
+}
+img {
+  width: 100%;
+  border-radius: 10px;
+}

@@ -1,0 +1,24 @@
+#container {
+  display: flex;
+  /* flex-direction: row; */
+  /* box-sizing: border-box; */
+}
+#sidebar {
+  height: 300px;
+  width: 150px;
+  border: 2px solid red;
+  border-radius: 10px;
+}
+#main {
+  /* border: 1px solid red; */
+  height: auto;
+  /* width: 80%; */
+  width: auto;
+  margin-left: 10px;
+}
+img {
+  width: 100%;
+}
+input {
+  width: 140px;
+}
