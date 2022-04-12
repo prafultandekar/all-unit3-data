@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #order{
+            background-color: rgb(119, 141, 141);
+
+        }
+        
+        
+        h2{
+            text-align: right;
+            margin-top: -300px;
+            color: red;
+        }  
+        #imgDiv {
+        height: 300px;
+        width: 300px;
+        margin: auto;
+      }
+      img {
+        width: 100%;
+      }
+       
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h3>Food Item </h3>
+    <input type="checkbox" id="burger" value="burger"/>
+    <label for="">Burger</label>
+    <input type="checkbox" id="pizza"/>
+    <label>Pizza</label>
+    <input type="checkbox" id="chapatis"/>
+<label>Chapatis</label>
+    <button id="order" onclick="OrderFood()">Order food</button>
+</div>
+    <diV id="imgDiv"></diV>
+    <h2></h2>
+</body>
+</html>
+<!-- <script src="./index.js"></script>
+ -->
+
+ <script>
+
+let btn = document.getElementById("order",OrderFood)
+
+function OrderFood(){
+
+    let time = Math.floor(Math.random()*2000)+1;
+
+    let status = "open";
+
+    let myPromise = new Promise(function(resolve,reject){
+        
+        if(status = "open")
+        {
+            setTimeout(function(){
+
+                resolve("order done")
+            },time)
+        }
+        else if(status === "close")
+        {
+            reject("shop has been closed")
+        }
+
+    })
+
+    myPromise.then(function(response){
+
+        let burger = document.getElementById("burger")
+
+        let pizza = document.getElementById("pizza")
+
+        let chapatis = document.getElementById("chapatis")
+
+        let div = document.getElementById("imgDiv")
+
+        let img = document.createElement("img");
+        div.append(img)
+
+
+        let data = [
+
+
+        
+    "https://media.istockphoto.com/photos/cheeseburger-with-tomato-and-lettuce-on-wooden-board-picture-id1309352410?b=1&k=20&m=1309352410&s=170667a&w=0&h=YduYl7Us5MSrw1EFSCxR9zDRLnEFa_O608NdqhHlSyM=",
+          "https://media.istockphoto.com/photos/homemade-indian-chicken-tikka-masala-pizza-picture-id1340589333?b=1&k=20&m=1340589333&s=170667a&w=0&h=rQaaNq-2klpZXcZ26amIfELKxq78-9S79FycY7Kzu28=",
+          "https://media.istockphoto.com/photos/roti-parata-or-roti-canai-with-lamb-curry-sauce-popular-malaysian-picture-id1296798642?b=1&k=20&m=1296798642&s=170667a&w=0&h=OT2HSrUZyvdajZwVsuZgn9YEWXqFeUX78_ZGpFPawhc="
+
+        ];
+
+        if(burger.checked === true)
+        {
+            document.getElementById("imgDiv").innerHTML="";
+            let img1 = data[0]
+            img.src = img1;
+            div.append(img)
+            document.querySelector("h2").innerText="Burger is Ready"
+        }
+
+        else if(pizza.checked === true)
+        {
+            document.getElementById("imgDiv").innerHTML="";
+            let img1 = data[1]
+            img.src  = img1
+            div.append(img)
+            document.querySelector("h2").innerText="Pizza is also Ready"
+        }
+
+        else if(chapatis.checked == true)
+        {
+            document.getElementById("imgDiv").innerHTML="";
+            let img1 = data[2]
+            img.src= img1;
+            div.append(img)
+            document.querySelector("h2").innerText = "Chapatis is also Ready"
+        }
+
+    })
+
+    myPromise.catch(function(error){
+        let div = document.getElementById("imgDiv");
+
+        let img = document.createElement("img");
+
+        let close =
+          "https://media.istockphoto.com/photos/sorry-we-are-closed-sign-board-hanging-on-door-of-cafe-picture-id1130208883?b=1&k=20&m=1130208883&s=170667a&w=0&h=m2b4rZDnyjv2M28rMWIoTjIsBPPPEFqAgD-_zgHA5oM=";
+        img.src = close;
+        div.append(img);
+      });
+
+    }
+
+
+
+
+
+
+ </script>
